@@ -1,11 +1,12 @@
 CFLAGS=
-fastblur: obj/fastblur.o
-	gcc $(CFLAGS) obj/fastblur.o -o fastblur -lm
+cudaBlur: obj/cudaBlur.o
+	nvcc $(CFLAGS) obj/cudaBlur.o -o cudaBlur -lm
 
 
-obj/fastblur.o: fastblur.c
-	gcc -c $(CFLAGS) fastblur.c -o obj/fastblur.o 
+obj/cudaBlur.o: cudaBlur.c
+	nvcc -c $(CFLAGS) cudaBlur.c -o obj/cudaBlur.o 
 
 
 clean:
-	rm -f obj/* fastblur output.png
+	rm -f obj/* cudaBlur output.png
+
